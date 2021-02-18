@@ -4,7 +4,7 @@ import os
 
 dirname = os.path.dirname(__file__)
 
-links = pd.read_csv(os.path.join(dirname,"../data/commonString.csv"), engine= 'python') 
+links = pd.read_csv(os.path.join(dirname,"./data/commonString.csv"), engine= 'python') 
 commonWord = links['String']
 g1 = links['Good']
 t1 = links['Word Count']
