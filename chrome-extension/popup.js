@@ -2,18 +2,19 @@ var bkg = chrome.extension.getBackgroundPage();
 
 chrome.runtime.onMessage.addListener( async function(request, sender) {
   if (request.action == "scrapeLinks") {
-    bkg.log(request.source);
+    bkg.log(JSON.stringify(request.source))
+    //bkg.log(request.source);
   let response;
   try {
-    response = await fetch('18.216.209.229/8081/test', {
+    response = await fetch('http://18.222.221.147/8081/test', {
       method: 'POST',
       headers: {
-        'Content-Type': 'text/plain',
+        'Content-Type': 'application/json',
       },
-      body: response.source.join(", "),
+      body: JSON.stringify(request.source),
     })
     } catch (error) {
-      console.error(error);
+      bkg.log(error);
     }
   }
 });
